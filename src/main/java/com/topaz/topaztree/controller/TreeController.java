@@ -17,9 +17,9 @@ public class TreeController {
     private LocalDateTime requestTime;
     @PostMapping("/tree")
     public int addTree(@RequestBody Element element){
-        Service service = new Service();
         requestTime = LocalDateTime.now();
         TreeRepository treeRepository = new TreeRepository();
+        treeRepository.addElement(element);
         return treeRepository.getTreeWeight();
     }
 }
