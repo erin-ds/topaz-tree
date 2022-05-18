@@ -1,8 +1,5 @@
 package com.topaz.topaztree.repository;
 
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class TreeRepository {
-
+public interface TreeRepository {
 }

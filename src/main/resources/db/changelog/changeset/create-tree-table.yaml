@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tree-table
+      author: Dmitriy Erin
+      changes:
+        - createTable:
+            tableName: tree
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: requestTime
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tree
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: treeWeight
+                  type: int
+                  constraints:
+                    nullable: false
+

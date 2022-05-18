@@ -1,8 +1,6 @@
 package com.topaz.topaztree.service;
 
 import com.topaz.topaztree.api.request.Element;
-import com.topaz.topaztree.repository.TreeRepository;
-
 import java.util.List;
 
 @org.springframework.stereotype.Service
