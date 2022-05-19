@@ -1,12 +1,17 @@
 Тестовое задание для Топаз-сервис
 
 Используются:
-Java 11
-Liquibase
-Spring-Boot 2
-H2
+Java 11,
+Liquibase,
+Spring-Boot 2,
+БД PostgreSQL 14.
 
-Получение дерева в формате JSON по адресу localhost:8080/tree
+
+
+POST-запрос дерева в формате JSON по адресу localhost:8080/tree
+Вернется вес дерева.
+
+Получить все записи из БД Get запросом по адресу localhost:8080/getall
 
 Дерево:
 
