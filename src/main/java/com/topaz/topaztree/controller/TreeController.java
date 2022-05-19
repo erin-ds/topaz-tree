@@ -4,9 +4,12 @@ import com.topaz.topaztree.api.request.Element;
 import com.topaz.topaztree.service.Service;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
 
 @RestController
 @Getter
@@ -21,6 +24,8 @@ public class TreeController {
 
     @PostMapping("/tree")
     public int addTree(@RequestBody Element element) {
-        return service.calculateTreeWeight(element);
+        service.setTime(LocalDateTime.now());
+        service.setElement(element);
+        return service.calculateTreeWeight();
     }
 }
