@@ -14,17 +14,17 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: requestTime
+                  name: request_time
                   type: datetime
                   constraints:
                     nullable: false
               - column:
-                  name: tree
+                  name: request
                   type: varchar(200)
                   constraints:
                     nullable: false
               - column:
-                  name: treeWeight
+                  name: tree_weight
                   type: int
                   constraints:
                     nullable: false

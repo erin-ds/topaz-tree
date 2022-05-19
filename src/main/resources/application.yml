@@ -2,9 +2,9 @@ spring:
   liquibase:
     enabled: true
   datasource:
-    url: jdbc:postgresql://192.168.10.243:5432/topazshop
-    username: topaz
-    password: office
+    url: jdbc:postgresql://localhost:5432/topaztree
+    username: postgres
+    password: gjcnuhb
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
     hibernate:

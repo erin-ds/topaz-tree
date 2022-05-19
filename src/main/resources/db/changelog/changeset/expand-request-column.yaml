@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: expand-request-column
+      author: Dmitriy Erin
+      changes:
+        - modifyDataType:
+            columnName: request
+            newDataType: varchar(500)
+            tableName: tree

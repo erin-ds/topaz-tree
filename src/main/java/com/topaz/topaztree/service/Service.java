@@ -1,9 +1,11 @@
 package com.topaz.topaztree.service;
 
 import com.topaz.topaztree.api.request.Element;
-import com.topaz.topaztree.repository.TreeEntity;
+import com.topaz.topaztree.repository.Tree;
+import com.topaz.topaztree.repository.TreeRepository;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,10 +17,15 @@ public class Service {
     private Element element;
     private LocalDateTime time;
     private int treeWeight;
+    private final TreeRepository treeRepository;
 
+    @Autowired
+    public Service(TreeRepository treeRepository) {
+        this.treeRepository = treeRepository;
+    }
 
-    public TreeEntity createEntity(){
-        return new TreeEntity(getTime(), getElement().toString(), getTreeWeight());
+    public void saveEntity() {
+        treeRepository.save(new Tree(getTime(), getElement().toString(), calculateTreeWeight()));
     }
 
     public int calculateTreeWeight() {
@@ -34,5 +41,9 @@ public class Service {
             }
         }
         return allChildrenWeight;
+    }
+
+    public List<Tree> getAllEntities(){
+        return treeRepository.findAll();
     }
 }
