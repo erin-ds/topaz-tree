@@ -19,8 +19,7 @@ public class TopazTreeGetTreeWeightTest {
     @Test
     public void calculatingTreeWeightTest(){
         Element element = new Element(10, List.of(new Element(10, null), new Element(15, null)));
-        service.setElement(element);
-        int actual = service.calculateTreeWeight();
+        int actual = service.calculateTreeWeight(element);
         int expected = 35;
         assertEquals(expected, actual);
     }

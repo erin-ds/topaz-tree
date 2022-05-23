@@ -26,13 +26,12 @@ public class TreeController {
 
     @PostMapping("/tree")
     public int addTree(@RequestBody Element element) {
-        service.setTime(LocalDateTime.now());
-        service.setElement(element);
-        service.saveEntity();
-        return service.getTreeWeight();
+        service.saveEntity(element);
+        return service.calculateTreeWeight(element);
     }
+
     @GetMapping("/getall")
-    public List<Tree> getAllEntities(){
+    public List<Tree> getAllEntities() {
         return service.getAllEntities();
     }
 }
