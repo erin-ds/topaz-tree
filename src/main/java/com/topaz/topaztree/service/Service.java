@@ -1,24 +1,24 @@
 package com.topaz.topaztree.service;
 
-import com.topaz.topaztree.api.request.Element;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.topaz.topaztree.dto.Element;
 import com.topaz.topaztree.repository.Tree;
 import com.topaz.topaztree.repository.TreeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @org.springframework.stereotype.Service
+@AllArgsConstructor
 public class Service {
     private final TreeRepository treeRepository;
 
-    @Autowired
-    public Service(TreeRepository treeRepository) {
-        this.treeRepository = treeRepository;
-    }
 
-    public void saveEntity(Element element) {
-        treeRepository.save(new Tree(LocalDateTime.now(), element.toString(), calculateTreeWeight(element)));
+    public int saveEntity(Element element) {
+        int treeWeight = calculateTreeWeight(element);
+        treeRepository.save(new Tree(LocalDateTime.now(), element, treeWeight));
+        return treeWeight;
     }
 
     public int calculateTreeWeight(Element element) {

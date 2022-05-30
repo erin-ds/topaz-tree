@@ -1,4 +1,8 @@
+server:
+  port: 9999
 spring:
+  application:
+    name: topaz-tree
   liquibase:
     enabled: true
   datasource:
@@ -9,6 +13,3 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
     hibernate:
       ddl-auto: update
-  h2:
-    console:
-      enabled: true

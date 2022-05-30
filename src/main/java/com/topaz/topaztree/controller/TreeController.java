@@ -1,20 +1,15 @@
 package com.topaz.topaztree.controller;
 
-import com.topaz.topaztree.api.request.Element;
+import com.topaz.topaztree.dto.Element;
 import com.topaz.topaztree.repository.Tree;
 import com.topaz.topaztree.service.Service;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@Getter
+@RequestMapping("/tree")
 public class TreeController {
 
     private final Service service;
@@ -24,13 +19,12 @@ public class TreeController {
         this.service = service;
     }
 
-    @PostMapping("/tree")
+    @PostMapping
     public int addTree(@RequestBody Element element) {
-        service.saveEntity(element);
-        return service.calculateTreeWeight(element);
+        return service.saveEntity(element);
     }
 
-    @GetMapping("/getall")
+    @GetMapping
     public List<Tree> getAllEntities() {
         return service.getAllEntities();
     }

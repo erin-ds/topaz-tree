@@ -1,4 +1,4 @@
-package com.topaz.topaztree.api.request;
+package com.topaz.topaztree.dto;
 
 import lombok.Data;
 

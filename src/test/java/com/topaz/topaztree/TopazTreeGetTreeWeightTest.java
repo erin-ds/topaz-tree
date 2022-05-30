@@ -1,6 +1,6 @@
 package com.topaz.topaztree;
 
-import com.topaz.topaztree.api.request.Element;
+import com.topaz.topaztree.dto.Element;
 import com.topaz.topaztree.service.Service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

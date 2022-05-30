@@ -20,7 +20,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: request
-                  type: varchar(200)
+                  type: jsonb
                   constraints:
                     nullable: false
               - column:
