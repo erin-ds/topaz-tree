@@ -22,7 +22,7 @@ public class TreeController {
     }
 
     @GetMapping
-    public Page<Tree> getAllEntities(@RequestParam int pageNumber, int listSize) {
+    public Page<Tree> getAllEntities(@RequestParam(defaultValue = "1", required = false) int pageNumber, @RequestParam(defaultValue = "10", required = false) int listSize) {
         return service.getAllEntities(pageNumber, listSize);
     }
 }

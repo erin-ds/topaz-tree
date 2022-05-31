@@ -27,7 +27,7 @@ public class TreeService {
     }
 
     public Page<Tree> getAllEntities(int page, int listSize) {
-        Pageable pageable = PageRequest.of(page, listSize);
+        Pageable pageable = PageRequest.of(page - 1, listSize);
         return treeRepository.findAll(pageable);
     }
 }
