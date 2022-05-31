@@ -1,16 +1,12 @@
-package com.topaz.topaztree.repository;
+package com.topaz.topaztree.domain;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.topaz.topaztree.dto.Element;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
-import com.vladmihalcea.hibernate.type.json.JsonType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -22,6 +18,7 @@ import java.time.LocalDateTime;
         name = "jsonb",
         typeClass = JsonBinaryType.class
 )
+@Table(name = "tree")
 public class Tree {
 
     @Id

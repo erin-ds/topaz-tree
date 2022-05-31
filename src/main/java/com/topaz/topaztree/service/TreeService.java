@@ -1,19 +1,20 @@
 package com.topaz.topaztree.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import com.topaz.topaztree.domain.Tree;
 import com.topaz.topaztree.dto.Element;
-import com.topaz.topaztree.repository.Tree;
 import com.topaz.topaztree.repository.TreeRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-@org.springframework.stereotype.Service
+@Service
 @AllArgsConstructor
-public class Service {
+public class TreeService {
     private final TreeRepository treeRepository;
-
 
     public int saveEntity(Element element) {
         int treeWeight = calculateTreeWeight(element);
@@ -25,7 +26,8 @@ public class Service {
         return element.getChildren() != null ? element.getChildren().stream().map(this::calculateTreeWeight).reduce(element.getWeight(), Integer::sum) : element.getWeight();
     }
 
-    public List<Tree> getAllEntities(){
-        return treeRepository.findAll();
+    public Page<Tree> getAllEntities(int page, int listSize) {
+        Pageable pageable = PageRequest.of(page, listSize);
+        return treeRepository.findAll(pageable);
     }
 }

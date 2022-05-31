@@ -1,23 +1,20 @@
 package com.topaz.topaztree.controller;
 
 import com.topaz.topaztree.dto.Element;
-import com.topaz.topaztree.repository.Tree;
-import com.topaz.topaztree.service.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.topaz.topaztree.domain.Tree;
+import com.topaz.topaztree.service.TreeService;
+import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/tree")
 public class TreeController {
 
-    private final Service service;
-
-    @Autowired
-    public TreeController(Service service) {
-        this.service = service;
-    }
+    private final TreeService service;
 
     @PostMapping
     public int addTree(@RequestBody Element element) {
@@ -25,7 +22,7 @@ public class TreeController {
     }
 
     @GetMapping
-    public List<Tree> getAllEntities() {
-        return service.getAllEntities();
+    public Page<Tree> getAllEntities(@RequestParam int pageNumber, int listSize) {
+        return service.getAllEntities(pageNumber, listSize);
     }
 }
